@@ -1,11 +1,295 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arquitetura de Computadores</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arquitetura de Computadores</title>
+
+<style>
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin:0;
+    background:#f4f6f9;
+}
+
+header{
+    background:#0d47a1;
+    color:white;
+    padding:30px;
+    text-align:center;
+}
+
+nav{
+    background:#1565c0;
+    padding:10px;
+    text-align:center;
+}
+
+nav a{
+    color:white;
+    margin:0 15px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+nav a:hover{
+    text-decoration:underline;
+}
+
+section{
+    max-width:1100px;
+    margin:auto;
+    padding:40px;
+}
+
+h2{
+    color:#0d47a1;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    margin:20px 0;
+    border-radius:10px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table th, table td{
+    border:1px solid #ddd;
+    padding:10px;
+}
+
+table th{
+    background:#e3f2fd;
+}
+
+footer{
+    text-align:center;
+    background:#0d47a1;
+    color:white;
+    padding:20px;
+}
+
+</style>
 </head>
+
 <body>
-    
+
+<header>
+<h1>Arquitetura de Computadores</h1>
+<p>Curso de Graduação em Computação / Engenharia</p>
+<p>Professor: Prof. Dr. Thommas Kevin</p>
+</header>
+
+<nav>
+<a href="#sobre">Sobre</a>
+<a href="#ementa">Ementa</a>
+<a href="#cronograma">Cronograma</a>
+<a href="#materiais">Materiais</a>
+<a href="#projetos">Projetos</a>
+<a href="#avisos">Avisos</a>
+</nav>
+
+<section id="sobre">
+
+<h2>📘 Sobre a Disciplina</h2>
+
+<div class="card">
+<p>
+A disciplina de <b>Arquitetura de Computadores</b> aborda os princípios de
+organização e funcionamento dos computadores modernos.
+Serão estudados os principais componentes do hardware, como
+processadores, memória, barramentos e sistemas de entrada e saída.
+</p>
+
+<p>
+Os alunos também irão explorar conceitos como:
+</p>
+
+<ul>
+<li>Conjunto de Instruções (ISA)</li>
+<li>Pipeline</li>
+<li>Hierarquia de Memória</li>
+<li>Cache</li>
+<li>Arquiteturas modernas de CPU</li>
+</ul>
+
+</div>
+
+</section>
+
+
+<section id="ementa">
+
+<h2>📚 Ementa</h2>
+
+<div class="card">
+
+<ul>
+
+<li>Introdução à Arquitetura de Computadores</li>
+
+<li>Representação de Dados</li>
+
+<li>Conjunto de Instruções (ISA)</li>
+
+<li>Unidade de Controle</li>
+
+<li>Pipeline de Processadores</li>
+
+<li>Hierarquia de Memória</li>
+
+<li>Memória Cache</li>
+
+<li>Arquiteturas Paralelas</li>
+
+<li>Introdução a GPUs e aceleradores</li>
+
+</ul>
+
+</div>
+
+</section>
+
+
+
+<section id="cronograma">
+
+<h2>📅 Cronograma</h2>
+
+<div class="card">
+
+<table>
+
+<tr>
+<th>Semana</th>
+<th>Tópico</th>
+<th>Material</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Introdução à Arquitetura de Computadores</td>
+<td>Slides Aula 1</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Representação de Dados</td>
+<td>Slides Aula 2</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Conjunto de Instruções</td>
+<td>Slides Aula 3</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>Pipeline</td>
+<td>Slides Aula 4</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>Memória Cache</td>
+<td>Slides Aula 5</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+
+<section id="materiais">
+
+<h2>📂 Materiais</h2>
+
+<div class="card">
+
+<ul>
+
+<li><a href="#">Slides das Aulas</a></li>
+
+<li><a href="#">Lista de Exercícios</a></li>
+
+<li><a href="#">Artigos Científicos</a></li>
+
+<li><a href="#">Projetos de Arquitetura</a></li>
+
+<li><a href="#">Repositório GitHub da Disciplina</a></li>
+
+</ul>
+
+</div>
+
+</section>
+
+
+
+<section id="projetos">
+
+<h2>💻 Projetos</h2>
+
+<div class="card">
+
+<p>Durante a disciplina os alunos irão desenvolver projetos como:</p>
+
+<ul>
+
+<li>Simulador simples de CPU</li>
+
+<li>Implementação de pipeline</li>
+
+<li>Análise de performance de arquiteturas</li>
+
+<li>Projeto final: estudo de uma arquitetura moderna</li>
+
+</ul>
+
+</div>
+
+</section>
+
+
+
+<section id="avisos">
+
+<h2>📢 Avisos</h2>
+
+<div class="card">
+
+<ul>
+
+<li>📅 Início das aulas: 16/03</li>
+
+<li>📄 Lista de exercícios 1 disponível</li>
+
+<li>💻 Formação dos grupos para projeto final</li>
+
+</ul>
+
+</div>
+
+</section>
+
+
+
+<footer>
+
+<p>Arquitetura de Computadores</p>
+<p>© 2026</p>
+
+</footer>
+
 </body>
 </html>
