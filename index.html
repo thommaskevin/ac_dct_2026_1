@@ -1,295 +1,213 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arquitetura de Computadores</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TinyML - Repository Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --accent-color: #38bdf8;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+        }
 
-<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    margin:0;
-    background:#f4f6f9;
-}
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            background-image: radial-gradient(circle at 50% 0%, #1e293b 0%, #0f172a 100%);
+            color: var(--text-primary);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
 
-header{
-    background:#0d47a1;
-    color:white;
-    padding:30px;
-    text-align:center;
-}
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
 
-nav{
-    background:#1565c0;
-    padding:10px;
-    text-align:center;
-}
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-nav a{
-    color:white;
-    margin:0 15px;
-    text-decoration:none;
-    font-weight:bold;
-}
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
 
-nav a:hover{
-    text-decoration:underline;
-}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
 
-section{
-    max-width:1100px;
-    margin:auto;
-    padding:40px;
-}
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
 
-h2{
-    color:#0d47a1;
-}
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px -10px rgba(56, 189, 248, 0.3);
+            background: rgba(30, 41, 59, 0.9);
+        }
 
-.card{
-    background:white;
-    padding:20px;
-    margin:20px 0;
-    border-radius:10px;
-    box-shadow:0 2px 6px rgba(0,0,0,0.1);
-}
+        .card-number {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 12px;
+            opacity: 0.8;
+        }
 
-table{
-    width:100%;
-    border-collapse:collapse;
-}
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
 
-table th, table td{
-    border:1px solid #ddd;
-    padding:10px;
-}
+        .card-icon {
+            margin-top: 20px;
+            align-self: flex-end;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
 
-table th{
-    background:#e3f2fd;
-}
+        .card:hover .card-icon {
+            opacity: 1;
+        }
 
-footer{
-    text-align:center;
-    background:#0d47a1;
-    color:white;
-    padding:20px;
-}
+        /* Estilo para barra de pesquisa rápida opcional */
+        .search-container {
+            max-width: 500px;
+            margin: 0 auto 40px;
+        }
 
-</style>
+        #searchBar {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--card-bg);
+            color: white;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 2rem; }
+            .container { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
-
 <body>
 
 <header>
-<h1>Arquitetura de Computadores</h1>
-<p>Curso de Graduação em Computação / Engenharia</p>
-<p>Professor: Prof. Dr. Thommas Kevin</p>
+    <h1>TinyML</h1>
+    <p>Uma coleção de algoritmos de Machine Learning para sistemas embarcados</p>
 </header>
 
-<nav>
-<a href="#sobre">Sobre</a>
-<a href="#ementa">Ementa</a>
-<a href="#cronograma">Cronograma</a>
-<a href="#materiais">Materiais</a>
-<a href="#projetos">Projetos</a>
-<a href="#avisos">Avisos</a>
-</nav>
-
-<section id="sobre">
-
-<h2>📘 Sobre a Disciplina</h2>
-
-<div class="card">
-<p>
-A disciplina de <b>Arquitetura de Computadores</b> aborda os princípios de
-organização e funcionamento dos computadores modernos.
-Serão estudados os principais componentes do hardware, como
-processadores, memória, barramentos e sistemas de entrada e saída.
-</p>
-
-<p>
-Os alunos também irão explorar conceitos como:
-</p>
-
-<ul>
-<li>Conjunto de Instruções (ISA)</li>
-<li>Pipeline</li>
-<li>Hierarquia de Memória</li>
-<li>Cache</li>
-<li>Arquiteturas modernas de CPU</li>
-</ul>
-
+<div class="search-container">
+    <input type="text" id="searchBar" placeholder="Pesquisar algoritmo..." onkeyup="filterCards()">
 </div>
 
-</section>
-
-
-<section id="ementa">
-
-<h2>📚 Ementa</h2>
-
-<div class="card">
-
-<ul>
-
-<li>Introdução à Arquitetura de Computadores</li>
-
-<li>Representação de Dados</li>
-
-<li>Conjunto de Instruções (ISA)</li>
-
-<li>Unidade de Controle</li>
-
-<li>Pipeline de Processadores</li>
-
-<li>Hierarquia de Memória</li>
-
-<li>Memória Cache</li>
-
-<li>Arquiteturas Paralelas</li>
-
-<li>Introdução a GPUs e aceleradores</li>
-
-</ul>
-
-</div>
-
-</section>
-
-
-
-<section id="cronograma">
-
-<h2>📅 Cronograma</h2>
-
-<div class="card">
-
-<table>
-
-<tr>
-<th>Semana</th>
-<th>Tópico</th>
-<th>Material</th>
-</tr>
-
-<tr>
-<td>1</td>
-<td>Introdução à Arquitetura de Computadores</td>
-<td>Slides Aula 1</td>
-</tr>
-
-<tr>
-<td>2</td>
-<td>Representação de Dados</td>
-<td>Slides Aula 2</td>
-</tr>
-
-<tr>
-<td>3</td>
-<td>Conjunto de Instruções</td>
-<td>Slides Aula 3</td>
-</tr>
-
-<tr>
-<td>4</td>
-<td>Pipeline</td>
-<td>Slides Aula 4</td>
-</tr>
-
-<tr>
-<td>5</td>
-<td>Memória Cache</td>
-<td>Slides Aula 5</td>
-</tr>
-
-</table>
-
-</div>
-
-</section>
-
-
-<section id="materiais">
-
-<h2>📂 Materiais</h2>
-
-<div class="card">
-
-<ul>
-
-<li><a href="#">Slides das Aulas</a></li>
-
-<li><a href="#">Lista de Exercícios</a></li>
-
-<li><a href="#">Artigos Científicos</a></li>
-
-<li><a href="#">Projetos de Arquitetura</a></li>
-
-<li><a href="#">Repositório GitHub da Disciplina</a></li>
-
-</ul>
-
-</div>
-
-</section>
-
-
-
-<section id="projetos">
-
-<h2>💻 Projetos</h2>
-
-<div class="card">
-
-<p>Durante a disciplina os alunos irão desenvolver projetos como:</p>
-
-<ul>
-
-<li>Simulador simples de CPU</li>
-
-<li>Implementação de pipeline</li>
-
-<li>Análise de performance de arquiteturas</li>
-
-<li>Projeto final: estudo de uma arquitetura moderna</li>
-
-</ul>
-
-</div>
-
-</section>
-
-
-
-<section id="avisos">
-
-<h2>📢 Avisos</h2>
-
-<div class="card">
-
-<ul>
-
-<li>📅 Início das aulas: 16/03</li>
-
-<li>📄 Lista de exercícios 1 disponível</li>
-
-<li>💻 Formação dos grupos para projeto final</li>
-
-</ul>
-
-</div>
-
-</section>
-
-
-
-<footer>
-
-<p>Arquitetura de Computadores</p>
-<p>© 2026</p>
-
-</footer>
+<div class="container" id="cardContainer">
+    </div>
+
+<script>
+    const projects = [
+        { id: "01", name: "Decision Tree", url: "01_decision_tree" },
+        { id: "02", name: "Random Forest", url: "02_random_forest" },
+        { id: "03", name: "XGBoost Classifier", url: "03_XGBoost" },
+        { id: "04", name: "GaussianNB", url: "04_GaussianNB" },
+        { id: "05", name: "Support Vector Machines", url: "05_support_vector_machine" },
+        { id: "06", name: "SEFR", url: "06_SEFR" },
+        { id: "07", name: "Principal Component Analysis", url: "07_principal_components_analysis" },
+        { id: "08", name: "Binomial Logistic Regression", url: "08_Logistic_Regressor" },
+        { id: "09", name: "K-means", url: "09_K_Means" },
+        { id: "10", name: "Linear Regression", url: "10_Linear_Regressor" },
+        { id: "11", name: "Gaussian Mixture Model", url: "11_GMM" },
+        { id: "12", name: "Artificial Neural Networks (MLP)", url: "12_MLP" },
+        { id: "13", name: "Convolutional Neural Networks (CNN)", url: "13_CNN" },
+        { id: "14", name: "XGBoost Regression", url: "14_XGBRegression" },
+        { id: "15", name: "Poisson Regression", url: "15_Poisson_Regressor" },
+        { id: "16", name: "K-Nearest Neighbors (KNN-Classifier)", url: "16_KNN" },
+        { id: "17", name: "ElasticNet (ELNET)", url: "17_ElasticNet" },
+        { id: "18", name: "Long Short-Term Memory (LSTM)", url: "18_LSTM" },
+        { id: "19", name: "AutoEncoder", url: "19_Autoencoder" },
+        { id: "20", name: "Q-Learning", url: "20_Q_Learning" },
+        { id: "21", name: "Huber Regression", url: "21_Huber_Regressor" },
+        { id: "22", name: "Quantization Aware Training", url: "22_QAT" },
+        { id: "23", name: "Post-Training Pruning", url: "23_PTP" },
+        { id: "24", name: "Knowledge Distillation", url: "24_Knowledge_Distillation" },
+        { id: "25", name: "MicroMobileNet", url: "25_MicromobileNet" },
+        { id: "26", name: "MultinominalNB", url: "26_MutinominalNB" },
+        { id: "27", name: "Kolmogorov-Arnold Networks (KAN)", url: "27_KAN" },
+        { id: "28", name: "Linear Discriminant Analysis (LDA)", url: "28_LDA" },
+        { id: "29", name: "Radial Basis Function Networks (RBFN)", url: "29_RBFN" },
+        { id: "30", name: "Graph Convolutional Networks (GCN)", url: "30_GCN" },
+        { id: "31", name: "Neural Additive Models (NAM)", url: "31_NAM" }
+    ];
+
+    const container = document.getElementById('cardContainer');
+    const baseUrl = "https://github.com/thommaskevin/TinyML/tree/main/";
+
+    function displayCards(data) {
+        container.innerHTML = "";
+        data.forEach(p => {
+            const card = document.createElement('a');
+            card.className = 'card';
+            card.href = baseUrl + p.url;
+            card.target = "_blank";
+            card.innerHTML = `
+                <div>
+                    <div class="card-number">MÓDULO ${p.id}</div>
+                    <div class="card-title">${p.name}</div>
+                </div>
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    function filterCards() {
+        const query = document.getElementById('searchBar').value.toLowerCase();
+        const filtered = projects.filter(p => p.name.toLowerCase().includes(query));
+        displayCards(filtered);
+    }
+
+    displayCards(projects);
+</script>
 
 </body>
 </html>
