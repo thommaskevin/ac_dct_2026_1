@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TinyML | Embedded Machine Learning Hub</title>
+    <title>Arquitetura de Computadores | Prof. Dr. Thommas Flores</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --bg-color: #0b0f1a;
-            --card-bg: rgba(30, 41, 59, 0.5);
+            --card-bg: rgba(30, 41, 59, 0.4);
             --accent-color: #38bdf8;
             --text-primary: #f8fafc;
             --text-secondary: #94a3b8;
@@ -29,8 +29,10 @@
                 radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
                 radial-gradient(circle at 100% 100%, rgba(129, 140, 248, 0.08) 0%, transparent 50%);
             color: var(--text-primary);
-            padding: 60px 20px;
+            padding: 40px 20px;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         /* --- Social Sidebar --- */
@@ -41,25 +43,27 @@
             transform: translateY(-50%);
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
             background: var(--sidebar-bg);
-            padding: 15px;
+            padding: 12px;
             border-radius: 30px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 100;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
 
         .sidebar a {
             color: var(--text-secondary);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
+            text-decoration: none;
         }
 
         .sidebar a:hover {
@@ -70,7 +74,17 @@
 
         header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
+        }
+
+        .uni-tag {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: block;
+            font-weight: 600;
         }
 
         header h1 {
@@ -85,20 +99,20 @@
 
         header p {
             color: var(--text-secondary);
-            font-size: 1.2rem;
-            max-width: 600px;
+            font-size: 1.1rem;
+            max-width: 700px;
             margin: 0 auto 25px;
+            line-height: 1.6;
         }
 
-        /* --- GitHub Star Button --- */
         .btn-star {
             display: inline-flex;
             align-items: center;
             gap: 10px;
             background: #24292f;
             color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
+            padding: 10px 24px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.9rem;
@@ -109,18 +123,19 @@
         .btn-star:hover {
             background: #30363d;
             border-color: var(--accent-color);
+            transform: translateY(-2px);
         }
 
         .search-container {
             max-width: 600px;
-            margin: 0 auto 50px;
-            position: relative;
+            margin: 0 auto 40px;
+            width: 100%;
         }
 
         #searchBar {
             width: 100%;
-            padding: 15px 25px;
-            border-radius: 12px;
+            padding: 16px 25px;
+            border-radius: 50px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             background: var(--card-bg);
             color: white;
@@ -130,27 +145,23 @@
             transition: 0.3s;
         }
 
-        #searchBar:focus {
-            border-color: var(--accent-color);
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
-        }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
+            gap: 20px;
+            flex-grow: 1;
+            width: 100%;
         }
 
         .card {
             background: var(--card-bg);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 30px;
-            text-decoration: none;
+            border-radius: 16px;
+            padding: 25px;
             color: inherit;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s ease;
             backdrop-filter: blur(12px);
             display: flex;
             flex-direction: column;
@@ -158,47 +169,122 @@
         }
 
         .card:hover {
-            transform: translateY(-8px) scale(1.02);
+            transform: translateY(-5px);
             border-color: var(--accent-color);
-            background: rgba(30, 41, 59, 0.8);
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+            background: rgba(30, 41, 59, 0.7);
         }
 
         .card-number {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 700;
             color: var(--accent-color);
+            opacity: 0.8;
+            margin-bottom: 5px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
         }
 
         .card-title {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 600;
-            line-height: 1.3;
+            margin-bottom: 15px;
         }
 
-        .card-footer {
-            margin-top: 25px;
+        .card-links {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
+            gap: 10px;
+            margin-top: 15px;
         }
 
-        @media (max-width: 768px) {
+        .card-links a {
+            flex: 1;
+            text-align: center;
+            padding: 8px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.2s;
+        }
+
+        .card-links a:hover {
+            background: rgba(56, 189, 248, 0.2);
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        /* --- Author Footer Section --- */
+        footer {
+            margin-top: 60px;
+            padding: 40px 0 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .author-box {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .author-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+
+        .author-info {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .author-email {
+            margin-top: 10px;
+            display: block;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* ==========================================
+           RESPONSIVE DESIGN
+           ========================================== */
+        @media (max-width: 900px) {
             .sidebar {
                 position: static;
                 flex-direction: row;
                 justify-content: center;
                 transform: none;
-                margin-bottom: 30px;
-                width: fit-content;
                 margin: 0 auto 30px;
+                width: 100%;
+                max-width: 400px;
+                flex-wrap: wrap;
+                border-radius: 20px;
             }
-            header h1 { font-size: 2.5rem; }
+            header h1 { font-size: 2.8rem; }
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 20px 15px; }
+            header h1 { font-size: 2.2rem; letter-spacing: -1px; }
+            header p { font-size: 1rem; }
+            .uni-tag { font-size: 0.75rem; }
+            .container { grid-template-columns: 1fr; gap: 15px; }
+            .card { padding: 20px; }
+            .search-container { margin-bottom: 30px; }
+            #searchBar { padding: 14px 20px; }
+            .sidebar a { width: 35px; height: 35px; font-size: 1rem; }
+            .author-box { padding: 20px 15px; }
+            .author-name { font-size: 1.2rem; }
+            .author-info { font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -206,81 +292,82 @@
 
 <div class="sidebar">
     <a href="https://github.com/thommaskevin/TinyML" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-    <a href="https://www.linkedin.com/in/thommas-kevin-ab9810166/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <a href="https://www.linkedin.com/in/thommas-kevin-ab9810166/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://medium.com/@thommaskevin" target="_blank" title="Medium"><i class="fab fa-medium-m"></i></a>
     <a href="https://www.youtube.com/channel/UC7uazGXaMIE6MNkHg4ll9oA" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
     <a href="https://scholar.google.com/citations?user=MqWV8JIAAAAJ&hl=pt-PT&authuser=2" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
     <a href="http://lattes.cnpq.br/0630479458408181" target="_blank" title="Lattes CV"><i class="far fa-file-alt"></i></a>
-    <a href="https://conect2ai.dca.ufrn.br/" target="_blank" title="Conecta.ai"><i class="fas fa-users"></i></a>
+    <a href="https://conect2ai.dca.ufrn.br/" target="_blank" title="Conecta.ai"><i class="fas fa-network-wired"></i></a>
 </div>
 
 <header>
-    <h1>TinyML</h1>
-    <p>A comprehensive collection of Machine Learning algorithms optimized for resource-constrained embedded systems.</p>
-    <a href="https://github.com/thommaskevin/TinyML" target="_blank" class="btn-star">
-        <i class="fas fa-star" style="color: #e3b341;"></i> Star on GitHub
+    <span class="uni-tag">UFRN | CERES | DCT</span>
+    <h1>Arquitetura de Computadores</h1>
+    <p>Página oficial da disciplina. Acesse aqui os materiais de estudo, slides das aulas e links para as videoaulas correspondentes.</p>
+    <a href="https://github.com/thommaskevin" target="_blank" class="btn-star">
+        <i class="fab fa-github"></i> Siga no GitHub
     </a>
 </header>
 
 <div class="search-container">
-    <input type="text" id="searchBar" placeholder="Search for an algorithm (e.g. CNN, XGBoost)..." onkeyup="filterCards()">
+    <input type="text" id="searchBar" placeholder="Pesquisar tópico da aula..." onkeyup="filterCards()">
 </div>
 
 <div class="container" id="cardContainer">
     </div>
 
+<footer>
+    <div class="author-box">
+        <div class="author-name">Prof. Dr. Thommas Flores</div>
+        <div class="author-info">
+            Universidade Federal do Rio Grande do Norte (UFRN)<br>
+            Centro de Ensino Superior do Seridó (CERES)<br>
+            Departamento de Computação e Tecnologia (DCT)
+        </div>
+        <a href="mailto:thommas.flores@ufrn.br" class="author-email">
+            <i class="far fa-envelope"></i> thommas.flores@ufrn.br
+        </a>
+    </div>
+</footer>
+
 <script>
-    const projects = [
-        { id: "01", name: "Decision Tree", url: "01_decision_tree" },
-        { id: "02", name: "Random Forest", url: "02_random_forest" },
-        { id: "03", name: "XGBoost Classifier", url: "03_XGBoost" },
-        { id: "04", name: "GaussianNB", url: "04_GaussianNB" },
-        { id: "05", name: "Support Vector Machines", url: "05_support_vector_machine" },
-        { id: "06", name: "SEFR", url: "06_SEFR" },
-        { id: "07", name: "Principal Component Analysis", url: "07_principal_components_analysis" },
-        { id: "08", name: "Binomial Logistic Regression", url: "08_Logistic_Regressor" },
-        { id: "09", name: "K-means", url: "09_K_Means" },
-        { id: "10", name: "Linear Regression", url: "10_Linear_Regressor" },
-        { id: "11", name: "Gaussian Mixture Model", url: "11_GMM" },
-        { id: "12", name: "Artificial Neural Networks (MLP)", url: "12_MLP" },
-        { id: "13", name: "Convolutional Neural Networks (CNN)", url: "13_CNN" },
-        { id: "14", name: "XGBoost Regression", url: "14_XGBRegression" },
-        { id: "15", name: "Poisson Regression", url: "15_Poisson_Regressor" },
-        { id: "16", name: "K-Nearest Neighbors (KNN)", url: "16_KNN" },
-        { id: "17", name: "ElasticNet (ELNET)", url: "17_ElasticNet" },
-        { id: "18", name: "Long Short-Term Memory (LSTM)", url: "18_LSTM" },
-        { id: "19", name: "AutoEncoder", url: "19_Autoencoder" },
-        { id: "20", name: "Q-Learning", url: "20_Q_Learning" },
-        { id: "21", name: "Huber Regression", url: "21_Huber_Regressor" },
-        { id: "22", name: "Quantization Aware Training", url: "22_QAT" },
-        { id: "23", name: "Post-Training Pruning", url: "23_PTP" },
-        { id: "24", name: "Knowledge Distillation", url: "24_Knowledge_Distillation" },
-        { id: "25", name: "MicroMobileNet", url: "25_MicromobileNet" },
-        { id: "26", name: "MultinominalNB (Text Classifier)", url: "26_MutinominalNB" },
-        { id: "27", name: "Kolmogorov-Arnold Networks (KAN)", url: "27_KAN" },
-        { id: "28", name: "Linear Discriminant Analysis (LDA)", url: "28_LDA" },
-        { id: "29", name: "Radial Basis Function Networks (RBFN)", url: "29_RBFN" },
-        { id: "30", name: "Graph Convolutional Networks (GCN)", url: "30_GCN" },
-        { id: "31", name: "Neural Additive Models (NAM)", url: "31_NAM" }
+    // Atualize os links de "slideUrl" e "videoUrl" com as URLs reais dos seus materiais
+    const aulas = [
+        { id: "01", name: "Introdução e Histórico dos Computadores", slideUrl: "#", videoUrl: "#" },
+        { id: "02", name: "Representação de Dados e Sistemas de Numeração", slideUrl: "#", videoUrl: "#" },
+        { id: "03", name: "Aritmética Computacional", slideUrl: "#", videoUrl: "#" },
+        { id: "04", name: "Álgebra Booleana e Portas Lógicas", slideUrl: "#", videoUrl: "#" },
+        { id: "05", name: "Conjunto de Instruções (ISA)", slideUrl: "#", videoUrl: "#" },
+        { id: "06", name: "Organização da Unidade Central de Processamento (UCP)", slideUrl: "#", videoUrl: "#" },
+        { id: "07", name: "Caminho de Dados e Controle", slideUrl: "#", videoUrl: "#" },
+        { id: "08", name: "Pipeline de Instruções: Conceitos e Conflitos", slideUrl: "#", videoUrl: "#" },
+        { id: "09", name: "Hierarquia de Memória", slideUrl: "#", videoUrl: "#" },
+        { id: "10", name: "Memória Cache: Mapeamento e Desempenho", slideUrl: "#", videoUrl: "#" },
+        { id: "11", name: "Memória Principal e Virtual", slideUrl: "#", videoUrl: "#" },
+        { id: "12", name: "Sistemas de Entrada e Saída (E/S)", slideUrl: "#", videoUrl: "#" },
+        { id: "13", name: "Barramentos e Interconexão", slideUrl: "#", videoUrl: "#" },
+        { id: "14", name: "Arquiteturas Paralelas e Multicore", slideUrl: "#", videoUrl: "#" }
     ];
 
     const container = document.getElementById('cardContainer');
-    const baseUrl = "https://github.com/thommaskevin/TinyML/tree/main/";
 
     function displayCards(data) {
         container.innerHTML = "";
-        data.forEach(p => {
-            const card = document.createElement('a');
+        data.forEach(aula => {
+            const card = document.createElement('div');
             card.className = 'card';
-            card.href = baseUrl + p.url;
-            card.target = "_blank";
             card.innerHTML = `
                 <div>
-                    <div class="card-number">Module ${p.id}</div>
-                    <div class="card-title">${p.name}</div>
+                    <div class="card-number">Aula ${aula.id}</div>
+                    <div class="card-title">${aula.name}</div>
                 </div>
-                <div class="card-footer">
-                    <span>View Repository</span>
-                    <i class="fas fa-arrow-right"></i>
+                <div class="card-links">
+                    <a href="${aula.slideUrl}" target="_blank" title="Acessar Slides">
+                        <i class="far fa-file-pdf"></i> Slides
+                    </a>
+                    <a href="${aula.videoUrl}" target="_blank" title="Assistir Videoaula">
+                        <i class="fas fa-play-circle"></i> Vídeo
+                    </a>
                 </div>
             `;
             container.appendChild(card);
@@ -289,11 +376,11 @@
 
     function filterCards() {
         const query = document.getElementById('searchBar').value.toLowerCase();
-        const filtered = projects.filter(p => p.name.toLowerCase().includes(query));
+        const filtered = aulas.filter(a => a.name.toLowerCase().includes(query));
         displayCards(filtered);
     }
 
-    displayCards(projects);
+    displayCards(aulas);
 </script>
 
 </body>
