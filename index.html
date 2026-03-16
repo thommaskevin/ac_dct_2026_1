@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arquitetura de Computadores | Prof. Dr. Thommas Flores</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -14,6 +14,7 @@
             --text-primary: #f8fafc;
             --text-secondary: #94a3b8;
             --sidebar-bg: rgba(15, 23, 42, 0.8);
+            --border-color: rgba(255, 255, 255, 0.1);
         }
 
         * {
@@ -29,7 +30,7 @@
                 radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
                 radial-gradient(circle at 100% 100%, rgba(129, 140, 248, 0.08) 0%, transparent 50%);
             color: var(--text-primary);
-            padding: 40px 20px;
+            padding: 40px 20px 80px;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -48,7 +49,7 @@
             padding: 12px;
             border-radius: 30px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
             z-index: 100;
             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
@@ -91,44 +92,123 @@
             font-size: 3.5rem;
             font-weight: 800;
             letter-spacing: -2px;
-            margin-bottom: 15px;
+            margin-bottom: 25px;
             background: linear-gradient(90deg, #38bdf8, #818cf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        header p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto 25px;
-            line-height: 1.6;
-        }
-
-        .btn-star {
+        /* --- Profile Box (Moved to Top) --- */
+        .author-box {
             display: inline-flex;
+            flex-direction: column;
             align-items: center;
-            gap: 10px;
-            background: #24292f;
-            color: white;
-            padding: 10px 24px;
-            border-radius: 50px;
+            background: rgba(15, 23, 42, 0.6);
+            padding: 25px 40px;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--accent-color);
+            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.15);
+            margin-bottom: 30px;
+        }
+
+        .author-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .author-info {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        .author-email {
+            margin-top: 12px;
+            display: inline-block;
+            color: var(--accent-color);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: 0.3s;
-            border: 1px solid rgba(255,255,255,0.1);
+            font-weight: 500;
+            transition: 0.2s;
         }
 
-        .btn-star:hover {
-            background: #30363d;
-            border-color: var(--accent-color);
-            transform: translateY(-2px);
+        .author-email:hover {
+            text-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
         }
 
+        /* --- Course Info Section --- */
+        .course-details {
+            max-width: 1000px;
+            margin: 0 auto 50px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 35px;
+            backdrop-filter: blur(12px);
+        }
+
+        .course-details h2 {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .course-details h3 {
+            font-size: 1.1rem;
+            color: #e2e8f0;
+            margin: 20px 0 10px;
+        }
+
+        .course-details ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .course-details li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .course-details li::before {
+            content: "•";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+            top: -2px;
+        }
+
+        /* Nested lists styling */
+        .course-details ul ul {
+            margin-top: 10px;
+            margin-left: 15px;
+        }
+
+        .course-details ul ul li::before {
+            content: "◦";
+            font-size: 1rem;
+        }
+
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        /* --- Search and Cards --- */
         .search-container {
             max-width: 600px;
-            margin: 0 auto 40px;
+            margin: 0 auto 30px;
             width: 100%;
         }
 
@@ -136,7 +216,7 @@
             width: 100%;
             padding: 16px 25px;
             border-radius: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
             background: var(--card-bg);
             color: white;
             outline: none;
@@ -145,19 +225,23 @@
             transition: 0.3s;
         }
 
+        #searchBar:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 20px;
-            flex-grow: 1;
             width: 100%;
         }
 
         .card {
             background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 25px;
             color: inherit;
@@ -175,88 +259,69 @@
         }
 
         .card-number {
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: 700;
             color: var(--accent-color);
-            opacity: 0.8;
-            margin-bottom: 5px;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
             text-transform: uppercase;
         }
 
         .card-title {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .card-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.5;
+            flex-grow: 1;
         }
 
         .card-links {
             display: flex;
             gap: 10px;
-            margin-top: 15px;
+            margin-top: auto;
         }
 
         .card-links a {
             flex: 1;
             text-align: center;
-            padding: 8px;
+            padding: 10px;
             border-radius: 8px;
             text-decoration: none;
             font-size: 0.85rem;
             font-weight: 600;
             color: var(--text-primary);
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
             transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
         }
 
         .card-links a:hover {
-            background: rgba(56, 189, 248, 0.2);
+            background: rgba(56, 189, 248, 0.15);
             border-color: var(--accent-color);
             color: var(--accent-color);
-        }
-
-        /* --- Author Footer Section --- */
-        footer {
-            margin-top: 60px;
-            padding: 40px 0 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-        }
-
-        .author-box {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 30px;
-            border-radius: 20px;
-            backdrop-filter: blur(5px);
-            width: 100%;
-            max-width: 500px;
-        }
-
-        .author-name {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 5px;
-        }
-
-        .author-info {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-        .author-email {
-            margin-top: 10px;
-            display: block;
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 500;
         }
 
         /* ==========================================
            RESPONSIVE DESIGN
            ========================================== */
+        @media (max-width: 960px) {
+            .two-columns {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
         @media (max-width: 900px) {
             .sidebar {
                 position: static;
@@ -275,23 +340,18 @@
         @media (max-width: 600px) {
             body { padding: 20px 15px; }
             header h1 { font-size: 2.2rem; letter-spacing: -1px; }
-            header p { font-size: 1rem; }
-            .uni-tag { font-size: 0.75rem; }
+            .course-details { padding: 25px 20px; }
             .container { grid-template-columns: 1fr; gap: 15px; }
-            .card { padding: 20px; }
-            .search-container { margin-bottom: 30px; }
-            #searchBar { padding: 14px 20px; }
             .sidebar a { width: 35px; height: 35px; font-size: 1rem; }
-            .author-box { padding: 20px 15px; }
+            .author-box { padding: 20px; border-radius: 12px; }
             .author-name { font-size: 1.2rem; }
-            .author-info { font-size: 0.85rem; }
         }
     </style>
 </head>
 <body>
 
 <div class="sidebar">
-    <a href="https://github.com/thommaskevin/TinyML" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://github.com/thommaskevin" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
     <a href="https://www.linkedin.com/in/thommas-kevin-ab9810166/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
     <a href="https://medium.com/@thommaskevin" target="_blank" title="Medium"><i class="fab fa-medium-m"></i></a>
     <a href="https://www.youtube.com/channel/UC7uazGXaMIE6MNkHg4ll9oA" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
@@ -303,20 +363,7 @@
 <header>
     <span class="uni-tag">UFRN | CERES | DCT</span>
     <h1>Arquitetura de Computadores</h1>
-    <p>Página oficial da disciplina. Acesse aqui os materiais de estudo, slides das aulas e links para as videoaulas correspondentes.</p>
-    <a href="https://github.com/thommaskevin" target="_blank" class="btn-star">
-        <i class="fab fa-github"></i> Siga no GitHub
-    </a>
-</header>
-
-<div class="search-container">
-    <input type="text" id="searchBar" placeholder="Pesquisar tópico da aula..." onkeyup="filterCards()">
-</div>
-
-<div class="container" id="cardContainer">
-    </div>
-
-<footer>
+    
     <div class="author-box">
         <div class="author-name">Prof. Dr. Thommas Flores</div>
         <div class="author-info">
@@ -328,25 +375,157 @@
             <i class="far fa-envelope"></i> thommas.flores@ufrn.br
         </a>
     </div>
-</footer>
+</header>
+
+<section class="course-details">
+    <div class="two-columns">
+        <div>
+            <h2>Objetivos</h2>
+            
+            <h3>Objetivos Gerais</h3>
+            <ul>
+                <li>Entender o hardware de um sistema computacional.</li>
+                <li>Entender o funcionamento dos vários módulos que compõem um sistema computacional.</li>
+                <li>Desenvolver uma visão crítica sobre os requisitos de desempenho associados a um sistema computacional.</li>
+            </ul>
+
+            <h3>Objetivos Específicos</h3>
+            <ul>
+                <li>Compreender os mecanismos básicos de:
+                    <ul>
+                        <li>Comunicação entre os vários módulos que compõem um sistema computacional.</li>
+                        <li>Armazenamento em memória.</li>
+                        <li>Sequenciamento de instruções.</li>
+                        <li>Tratamento de interrupções e operadores aritméticos.</li>
+                    </ul>
+                </li>
+                <li>Compreender as principais estruturas de hardware de um sistema computacional.</li>
+                <li>Conhecer o impacto de diferentes mecanismos e estruturas no desempenho de um sistema computacional em diferentes aplicações.</li>
+            </ul>
+        </div>
+        
+        <div>
+            <h2>Conteúdo</h2>
+            <ul>
+                <li>Estrutura básica de computadores.</li>
+                <li>A Unidade Central de Processamento.</li>
+                <li>Estruturas de barramentos.</li>
+                <li>Conjunto de Instruções: tipos, formatos, modos de endereçamento, controle de fluxo.</li>
+                <li>Estrutura e Funcionamento da CPU: caminho de dados, unidade de controle, microprogramação.</li>
+                <li>Pipeline, Paralelismo em nível de instrução.</li>
+                <li>Hierarquia e Organização de memórias: memória principal, memória cache, memória virtual.</li>
+                <li>Sistemas de Entrada e Saída: barramentos, E/S mapeada em memória, interrupções, DMA.</li>
+                <li>Suporte ao sistema operacional.</li>
+                <li>Padrões de arquiteturas.</li>
+                <li>Multiprogramação.</li>
+                <li>Paralelismo em nível de processador.</li>
+                <li>Introdução a arquiteturas dedicadas.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<div class="search-container">
+    <input type="text" id="searchBar" placeholder="Pesquisar tópico da aula..." onkeyup="filterCards()">
+</div>
+
+<div class="container" id="cardContainer">
+    </div>
 
 <script>
-    // Atualize os links de "slideUrl" e "videoUrl" com as URLs reais dos seus materiais
+    // As chaves "slideUrl" e "videoUrl" devem ser substituídas pelos links reais dos seus materiais
     const aulas = [
-        { id: "01", name: "Introdução e Histórico dos Computadores", slideUrl: "#", videoUrl: "#" },
-        { id: "02", name: "Representação de Dados e Sistemas de Numeração", slideUrl: "#", videoUrl: "#" },
-        { id: "03", name: "Aritmética Computacional", slideUrl: "#", videoUrl: "#" },
-        { id: "04", name: "Álgebra Booleana e Portas Lógicas", slideUrl: "#", videoUrl: "#" },
-        { id: "05", name: "Conjunto de Instruções (ISA)", slideUrl: "#", videoUrl: "#" },
-        { id: "06", name: "Organização da Unidade Central de Processamento (UCP)", slideUrl: "#", videoUrl: "#" },
-        { id: "07", name: "Caminho de Dados e Controle", slideUrl: "#", videoUrl: "#" },
-        { id: "08", name: "Pipeline de Instruções: Conceitos e Conflitos", slideUrl: "#", videoUrl: "#" },
-        { id: "09", name: "Hierarquia de Memória", slideUrl: "#", videoUrl: "#" },
-        { id: "10", name: "Memória Cache: Mapeamento e Desempenho", slideUrl: "#", videoUrl: "#" },
-        { id: "11", name: "Memória Principal e Virtual", slideUrl: "#", videoUrl: "#" },
-        { id: "12", name: "Sistemas de Entrada e Saída (E/S)", slideUrl: "#", videoUrl: "#" },
-        { id: "13", name: "Barramentos e Interconexão", slideUrl: "#", videoUrl: "#" },
-        { id: "14", name: "Arquiteturas Paralelas e Multicore", slideUrl: "#", videoUrl: "#" }
+        { 
+            id: "Unidade 01", 
+            name: "Estrutura Básica de Computadores", 
+            desc: "Histórico, modelo de Von Neumann, representação de dados e aritmética binária.",
+            slideUrl: "#", 
+            videoUrl: "#" 
+        },
+        { 
+            id: "Unidade 02", 
+            name: "A Unidade Central de Processamento", 
+            desc: "Estrutura interna da CPU, registradores, ALU e ciclo de instrução completo.",
+            slideUrl: "#", 
+            videoUrl: "#" 
+        },
+        { 
+            id: "Unidade 03", 
+            name: "Estruturas de Barramentos", 
+            desc: "Barramento de dados, endereços e controle. Temporização, arbitragem e hierarquia.",
+            slideUrl: "#", 
+            videoUrl: "#" 
+        },
+        { 
+            id: "Unidade 04", 
+            name: "Conjunto de Instruções (ISA)", 
+            desc: "Tipos de instruções, formatos, modos de endereçamento e controle de fluxo.",
+            slideUrl: "#", 
+            videoUrl: "#" 
+        },
+        { 
+            id: "Unidade 05", 
+            name: "Estrutura e Funcionamento da CPU", 
+            desc: "Caminho de dados, projeto da ALU e Unidade de Controle (hardwired e microprogramada).",
+            slideUrl: "#", 
+            videoUrl: "#" 
+        },
+        { 
+            id: "Unidade 06", 
+            name: "Pipeline e Paralelismo de Instrução", 
+            desc: "Estágios do pipeline, hazards (dados, controle, estruturais) e execução superescalar.",
+            slideUrl: "#", 
+            videoUrl: "#" 
+        },
+        { 
+            id: "Unidade 07", 
+            name: "Hierarquia e Organização de Memórias", 
+            desc: "Localidade, organização de Cache (mapeamento, políticas) e Memória Virtual (paginações e TLB).",
+            slideUrl: "#", 
+            videoUrl: "#" 
+        },
+        { 
+            id: "Unidade 08", 
+            name: "Sistemas de Entrada e Saída", 
+            desc: "E/S programada, interrupções, DMA e hierarquia de barramentos de periféricos.",
+            slideUrl: "#", 
+            videoUrl: "#" 
+        },
+        { 
+            id: "Unidade 09", 
+            name: "Suporte ao Sistema Operacional", 
+            desc: "Modos de operação, traps, syscalls e virtualização de hardware.",
+            slideUrl: "#", 
+            videoUrl: "#" 
+        },
+        { 
+            id: "Unidade 10", 
+            name: "Padrões de Arquiteturas", 
+            desc: "Comparativo RISC vs CISC, evolução da arquitetura x86 e extensões SIMD.",
+            slideUrl: "#", 
+            videoUrl: "#" 
+        },
+        { 
+            id: "Unidade 11", 
+            name: "Multiprogramação", 
+            desc: "Suporte de hardware à multitarefa, sincronização, troca de contexto e coerência de cache.",
+            slideUrl: "#", 
+            videoUrl: "#" 
+        },
+        { 
+            id: "Unidade 12", 
+            name: "Paralelismo em Nível de Processador", 
+            desc: "Arquiteturas multicore, taxonomia de Flynn, GPUs, CUDA e clusters.",
+            slideUrl: "#", 
+            videoUrl: "#" 
+        },
+        { 
+            id: "Unidade 13", 
+            name: "Arquiteturas Dedicadas", 
+            desc: "DSPs, FPGAs, aceleradores de IA/ML, TPUs e tendências futuras em computação.",
+            slideUrl: "#", 
+            videoUrl: "#" 
+        }
     ];
 
     const container = document.getElementById('cardContainer');
@@ -358,8 +537,9 @@
             card.className = 'card';
             card.innerHTML = `
                 <div>
-                    <div class="card-number">Aula ${aula.id}</div>
+                    <div class="card-number">${aula.id}</div>
                     <div class="card-title">${aula.name}</div>
+                    <div class="card-desc">${aula.desc}</div>
                 </div>
                 <div class="card-links">
                     <a href="${aula.slideUrl}" target="_blank" title="Acessar Slides">
@@ -376,10 +556,14 @@
 
     function filterCards() {
         const query = document.getElementById('searchBar').value.toLowerCase();
-        const filtered = aulas.filter(a => a.name.toLowerCase().includes(query));
+        const filtered = aulas.filter(a => 
+            a.name.toLowerCase().includes(query) || 
+            a.desc.toLowerCase().includes(query)
+        );
         displayCards(filtered);
     }
 
+    // Inicializa a exibição
     displayCards(aulas);
 </script>
 
